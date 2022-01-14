@@ -1,0 +1,37 @@
+<div class="container-md home d-flex flex-column">
+    <div class="header d-flex flex-row justify-content-between">
+        <div class="searchbar d-flex ">
+            <input type="text" class="searchbox" placeholder="Search">
+            <mat-icon class="search">search</mat-icon>
+        </div>
+        <div class="date align-self-center">
+            <strong>Friday</strong><span class="text-muted"> 14 January</span>
+        </div>
+    </div>
+    <div class="weather-section d-flex flex-column">
+        <div class="weather-icon d-flex">
+            <img src="{{weatherIconUrl}}">
+            <div class=" mt-4">
+
+                <strong class="text-white">Today's Weather</strong>
+                <div class="w-100 d-flex justify-content-center mt-4"><strong
+                        class="weather-text text-white mx-auto">{{weatherState}}</strong></div>
+            </div>
+        </div>
+        <div class="weather-data d-flex flex-column">
+            <div class="temperature mt-4 align-self-center">
+                <strong class="text-white">Temperature(in Celcius) </strong>
+                <strong class="text-white"> : {{temperature}}</strong>
+            </div>
+            <div class="humidity mt-2 align-self-center">
+                <strong class="text-white">Humidity </strong>
+                <strong class="text-white"> : {{humidity}}</strong>
+            </div>
+            <div class="humidity mt-2 align-self-center">
+                <strong class="text-white">Gust(in kph) </strong>
+                <strong class="text-white"> : {{gust}}</strong>
+            </div>
+        </div>
+    </div>
+
+</div>

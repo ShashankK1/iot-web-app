@@ -1,0 +1,69 @@
+
+
+.home{
+    position: relative;
+    margin-top: 22px;
+    margin-left: 26px;
+}
+.searchbar{
+    
+    
+
+    input {
+        padding-left: 24px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+    .searchbox{
+        border-radius: 20px;
+        height: 38px;
+        width: 380px;
+        border: none;
+        background-color: #00dbde;
+        color: white;
+    }
+    textarea:focus, input:focus{ border: none;outline: none; }
+    .search{
+        position: relative;
+        color: white;
+        top: 7px;
+        left:-48px
+    }
+    ::placeholder{
+        margin-left: 8px;
+        opacity: 1;
+        color:#fff;
+    }
+}
+.date{
+    font-size: 1.15rem;
+    
+}
+.header{
+    width: 50vw;
+}
+.weather-section{
+    margin-top: 24px;
+    display: block;
+    position: relative;
+    border-radius: 1px solid black;
+    border-radius: 30px;
+    width: 250px;
+    height: 250px;
+    
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #00dbde,#6386EB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #00dbde, #6386EB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .weather-icon{
+        img{
+
+            position: relative;
+            height: 125px;
+            width: 125px;
+        }
+    }
+    .weather-text{
+        font-size: xx-large;
+    }
+}

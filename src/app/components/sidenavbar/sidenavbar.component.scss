@@ -1,0 +1,90 @@
+.sidebar-container{
+    width: 12vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    .sidebar-background{
+        background: #fc00ff;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        height: 95%;
+        width: 100%;
+        border-radius: 40px;
+    }
+    strong{
+        font-size: 1.05rem;
+        color: white;
+        cursor: pointer;
+    }
+    .tabs{
+        margin-left: 45px;
+        width: 80%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 24vh;     
+        .tab{
+            
+            position: relative;
+            height: 6vh;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 60px;
+            mat-icon{
+                height: 28px;
+                width: 24px;
+               
+            }
+        }
+    }
+    .home{
+        margin-top: 35px;
+        img{
+            height: 48px;
+            width: 48px;
+        }
+    }
+    .logout{
+        margin-bottom: 24px;
+        height: 32px;
+        mat-icon{
+            height: 28px;
+            width: 24px;
+           
+        }
+    }
+
+    .active-tab{
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        background-color: white;
+        color:#612897 ;
+        padding-left: 20px;
+    }
+    .active-tab::after{
+        content: "";
+        position: absolute;
+        top: -23px;
+        right: 3px;
+        width: 23px;
+        height: 23px;
+        box-shadow:10px 10px 0px #ffffff ;
+        border-radius: 51%;
+    }
+    .active-tab::before{
+        content: "";
+        position: absolute;
+        bottom: -23px;
+        right: 3px;
+        width: 23px;
+        height: 23px;
+        box-shadow:10px -10px 0px #ffffff ;
+        border-radius: 51%;
+    }
+
+}

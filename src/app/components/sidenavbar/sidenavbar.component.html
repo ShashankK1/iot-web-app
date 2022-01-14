@@ -1,0 +1,22 @@
+<div class="sidebar-container">
+    <div class="sidebar-background">
+        <div class="sidebar-tabs d-flex flex-column align-items-center h-100 w-100">
+            <div class="home flex-grow-0">
+                    <img src="../../../assets/technology.svg">
+            </div>
+            <div class="tabs flex-grow-1">
+                <strong *ngFor="let tab of sideNavTabs;let i=index" 
+                class="tab pl-5" [ngClass]="(selectedTab === i)?'active-tab':'' " 
+                (click)="onTabSelect(i)"
+                >
+                    <mat-icon>{{sideNavIcons[i]}}</mat-icon>{{tab}}
+                </strong>
+            </div>
+            <div class="logout flex-grow-0">
+                <strong class="d-flex align-items-center">
+                    <mat-icon>wifi_on</mat-icon>Logout
+                </strong>
+            </div>
+        </div>
+    </div>
+</div>
