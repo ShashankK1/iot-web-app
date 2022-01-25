@@ -7,7 +7,6 @@
 }
 .searchbar{
     
-    
 
     input {
         padding-left: 24px;
@@ -17,6 +16,7 @@
     }
     .searchbox{
         border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         height: 38px;
         width: 380px;
         border: none;
@@ -44,17 +44,18 @@
     width: 50vw;
 }
 .weather-section{
-    margin-top: 24px;
+    margin-top: 48px;
     display: block;
     position: relative;
     border-radius: 1px solid black;
     border-radius: 30px;
     width: 250px;
-    height: 250px;
-    
+    height: 600px;
+    margin-left: 56px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     background: #fc00ff;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #00dbde,#6386EB);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #00dbde, #6386EB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to bottom, #00dbde,#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #00dbde, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     .weather-icon{
         img{
 
@@ -65,5 +66,107 @@
     }
     .weather-text{
         font-size: xx-large;
+        position: relative;
+    }
+    ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: white;
+    }
+    .weather-data{
+        .label1{
+            position: absolute;
+            top:150px;
+            left: 90px;
+        }
+        .label2{
+            position: absolute;
+            top:300px;
+            left: 100px;
+        }
+        .label3{
+            position: absolute;
+            top:440px;
+            left: 110px;
+        }
+        .text1,.text2,.text3{
+            position: absolute;
+            color: white;
+            font-weight: 500;
+            
+        }
+        .text1{
+            top: 200px;
+            left:43%;
+            font-size: 3rem;
+        }
+        .text1-side{
+            position: relative;
+            top: -30px;
+            left: -10px;
+            font-size: 0.8rem;
+            font-weight: 200;
+        }
+        .text2{
+            left:39%;
+            top:345px;
+            font-size: 3rem;
+        }
+        .text2-side{
+            position: relative;
+            top: -30px;
+            left: 0px;
+            font-size: 0.8rem;
+            font-weight: 200;
+        }
+        .text3{
+            font-size: 2.5rem;
+            left:34%;
+            top:490px;
+        }
+        .text3-side{
+            position: relative;
+            top: -30px;
+            left: 0px;
+            font-size: 0.8rem;
+            font-weight: 200;
+        }
+    }
+   
+}
+.weather-forecast{
+    margin-left: 140%;
+    position: absolute;
+    width: 140%;
+    height: 600px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #00dbde,#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #00dbde, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    img{
+        height: 180px;
+        width: 180px;
+    }
+}
+.user-profile{
+    margin-top: 35px;
+    position: absolute;
+    display: block;
+    right: -510px;
+    height: 690px;
+    width: 400px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #0AD2DF#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #0AD2DF, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .profile-img{
+        border:2px solid white;
+        border-radius: 30px;
+    }
+    
+    .material-icons{
+        font-size: 80px;
+        margin-left: -36px;
+        cursor: pointer;
     }
 }

@@ -18,5 +18,14 @@ export class WeatherService {
     }
     return this.http.get(`${environment.WEATHER_URL}/current.json`,{params:params});
   }
+
+  getWeatherForecast(query:string,days:number){
+    const params={
+      key:environment.WEATHER_KEY,
+      q:query,
+      days:days
+    }
+    return this.http.get(`${environment.WEATHER_URL}/forecast.json`,{params:params});
+  }
   
 }

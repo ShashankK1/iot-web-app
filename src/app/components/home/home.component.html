@@ -10,28 +10,80 @@
     </div>
     <div class="weather-section d-flex flex-column">
         <div class="weather-icon d-flex">
-            <img src="{{weatherIconUrl}}">
+            <img src="{{weatherIconUrl}}" *ngIf="weatherIconUrl.length >0">
+            <img src="#" *ngIf="weatherIconUrl.length === 0">
             <div class=" mt-4">
-
                 <strong class="text-white">Today's Weather</strong>
-                <div class="w-100 d-flex justify-content-center mt-4"><strong
-                        class="weather-text text-white mx-auto">{{weatherState}}</strong></div>
+                <div class="w-100 d-flex justify-content-center mt-4">
+                    <strong class="weather-text text-white mx-auto" *ngIf="weatherState.length > 0">{{weatherState}}</strong>
+                    <strong class="weather-text text-white mx-auto" *ngIf="weatherState.length === 0">No Data</strong>
+                </div>
             </div>
         </div>
-        <div class="weather-data d-flex flex-column">
-            <div class="temperature mt-4 align-self-center">
-                <strong class="text-white">Temperature(in Celcius) </strong>
-                <strong class="text-white"> : {{temperature}}</strong>
+        <div class="weather-data">
+            <div class="current-weather d-flex flex-column justify-content-center">
+
+                <div class="temperature mt-4 align-self-center">
+                    <strong class="text-white label1">Temperature</strong>
+                    <span class="text1">
+                        {{temperature}} <span class="text-white text1-side">&deg;C</span>
+                    </span>
+                    <!-- <mat-progress-bar mode="determinate" [value]="temperature"></mat-progress-bar> -->
+                    
+                </div>
+                <div class="humidity mt-4 align-self-center">
+                    <strong class="text-white label2">Humidity</strong>
+                    <span class="text2">
+                        
+                        {{(humidity !== 100)?humidity:'99'}}<span class="text-white text2-side">%</span>
+                        
+                    </span>
+                    
+                </div>
+                <div class="gust mt-4 align-self-center">
+                    <strong class="text-white label3">Gust</strong>
+                    <span class="text3">
+                       
+                        {{gust}}<span class="text-white text3-side">kph</span>
+                    </span>
+                    
+                </div>
             </div>
-            <div class="humidity mt-2 align-self-center">
-                <strong class="text-white">Humidity </strong>
-                <strong class="text-white"> : {{humidity}}</strong>
+        </div>
+        <div class="weather-forecast d-flex flex-column">
+            <div class="forecast-header d-flex align-self-center">
+                <strong class="text-white justify-content-center mt-1">Weather Forecast</strong>
             </div>
-            <div class="humidity mt-2 align-self-center">
-                <strong class="text-white">Gust(in kph) </strong>
-                <strong class="text-white"> : {{gust}}</strong>
+            <div class="d-flex mt-3 flex-column justify-content-center">
+                <div *ngFor="let x of forecastWeatherData;let i=index" class="d-flex align-items-center">
+                    <img src="{{x.url}}">
+                    <div class="ml-2 d-flex flex-column">
+
+                        <strong class="text-white">{{x.text}}</strong>
+                        <strong class="text-white">Day {{i+1}}</strong>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="user-profile d-flex flex-column flex-column mt-2">
+        <div class="profile-icon d-flex w-100 justify-content-center mt-4">
+            <img src="../../../assets/profile.svg" style="height: 128px;width: 128px;" class="profile-img" >
+        </div>
+        <div class="user-location text-white d-flex flex-column align-items-center mt-2">
+            <strong class="mt-2">Nyay Khand-1, Indirapuram</strong>
+            <strong class="mt-2">Ghaziabad(201014),</strong>
+            <strong class="mt-2">UP, India</strong>
+        </div>
+        <div class="users-device d-flex flex-column text-white mt-4 align-items-center">
+            <br>
+            <strong class="mt-2">Total Device alloted : 5</strong>
+            <strong class="mt-2">Number of Hub : 1</strong>
+            <strong class="mt-2">Number of sensors : 4</strong>
+        </div>
+        <div class="turn-on-relay d-flex flex-column align-items-center text-white mt-4" >
+            <strong class="mt-5" style="font-size:x-large">Turn on Water</strong>
+            <mat-icon class="mt-2">power_settings_new</mat-icon>
+        </div>
+    </div>
 </div>
