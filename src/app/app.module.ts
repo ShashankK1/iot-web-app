@@ -13,6 +13,15 @@ import { AboutUsComponent } from './components/about-us/about-us.component'
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ChartsComponent } from './components/charts/charts.component';
+import { FirebaseApp } from '@angular/fire/app';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -21,7 +30,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     SidenavbarComponent,
     HomeComponent,
     DashboardComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatIconModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

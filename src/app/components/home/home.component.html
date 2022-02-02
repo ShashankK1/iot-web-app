@@ -74,6 +74,7 @@
             <strong class="mt-2">Nyay Khand-1, Indirapuram</strong>
             <strong class="mt-2">Ghaziabad(201014),</strong>
             <strong class="mt-2">UP, India</strong>
+            <strong><mat-icon matTooltip="Change Location to Sensors" (click)="getSensorLocation()">track_changes</mat-icon></strong>
         </div>
         <div class="users-device d-flex flex-column text-white mt-4 align-items-center">
             <br>
@@ -82,8 +83,10 @@
             <strong class="mt-2">Number of sensors : 4</strong>
         </div>
         <div class="turn-on-relay d-flex flex-column align-items-center text-white mt-4" >
-            <strong class="mt-5" style="font-size:x-large">Turn on Water</strong>
-            <mat-icon class="mt-2">power_settings_new</mat-icon>
+            <strong class="mt-5" style="font-size:x-large" >Turn on Water</strong>
+            <mat-icon class="mt-2" matTooltip="Turn ON/OFF water" 
+            [ngStyle]="(pumpData)?{'color':'rgb(100,255,100)'}:{'color':'rgb(255,100,100)'}"
+            (click)="updateValues()">power_settings_new</mat-icon>
         </div>
     </div>
 </div>

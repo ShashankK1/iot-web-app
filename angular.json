@@ -106,6 +106,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "iot-app:build:production",
+            "firebaseProject": "agricultureiot-4fe2c",
+            "firebaseHostingSite": "agricultureiot-4fe2c"
+          }
         }
       }
     }

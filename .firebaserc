@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "agricultureiot-4fe2c": {
+      "hosting": {
+        "iot-app": [
+          "agricultureiot-4fe2c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "agricultureiot-4fe2c"
+  }
+}

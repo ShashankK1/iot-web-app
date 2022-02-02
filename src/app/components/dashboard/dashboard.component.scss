@@ -1,0 +1,86 @@
+.dashboard{
+    position: relative;
+    margin-top: 22px;
+    margin-left: 26px;
+}
+.searchbar{
+    
+
+    input {
+        padding-left: 24px;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+    .searchbox{
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        height: 38px;
+        width: 380px;
+        border: none;
+        background-color: #00dbde;
+        color: white;
+    }
+    textarea:focus, input:focus{ border: none;outline: none; }
+    .search{
+        position: relative;
+        color: white;
+        top: 7px;
+        left:-48px
+    }
+    ::placeholder{
+        margin-left: 8px;
+        opacity: 1;
+        color:#fff;
+    }
+}
+.date{
+    font-size: 1.15rem;
+    
+}
+.header{
+    width: 50vw;
+}
+
+.user-profile{
+    margin-top: 35px;
+    position: absolute;
+    display: block;
+    right: -510px;
+    height: 690px;
+    width: 400px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    background: #fc00ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #0AD2DF#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #0AD2DF, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .profile-img{
+        border:2px solid white;
+        border-radius: 30px;
+    }
+    
+    .material-icons{
+        font-size: 80px;
+        margin-left: -45px;
+        cursor: pointer;
+    }
+}
+.chart-section{
+    margin-top: 36px;
+    
+    .chart{
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        background: #fc00ff;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #0AD2DF#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #0AD2DF, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        height: 500px;
+        width: 950px;
+        position: absolute;
+        .dataChart{
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

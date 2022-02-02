@@ -1,1 +1,39 @@
-
+<div class="container-md dashboard d-flex flex-column">
+    <div class="header d-flex flex-row justify-content-between">
+        <div class="searchbar d-flex ">
+            <input type="text" class="searchbox" placeholder="Search">
+            <mat-icon class="search">search</mat-icon>
+        </div>
+        <div class="date align-self-center">
+            <strong>Friday</strong><span class="text-muted"> 14 January</span>
+        </div>
+    </div>
+    <div class="chart-section">
+        <div class="chart">
+            <canvas id='dataChart' class="dataChart h-100 w-100"></canvas>
+        </div>
+    </div>
+    <div class="user-profile d-flex flex-column flex-column mt-2">
+        <div class="profile-icon d-flex w-100 justify-content-center mt-4">
+            <img src="../../../assets/profile.svg" style="height: 128px;width: 128px;" class="profile-img" >
+        </div>
+        <div class="user-location text-white d-flex flex-column align-items-center mt-2">
+            <strong class="mt-2">Nyay Khand-1, Indirapuram</strong>
+            <strong class="mt-2">Ghaziabad(201014),</strong>
+            <strong class="mt-2">UP, India</strong>
+            <strong><mat-icon matTooltip="Change Location to Sensors">track_changes</mat-icon></strong>
+        </div>
+        <div class="users-device d-flex flex-column text-white mt-4 align-items-center">
+            <br>
+            <strong class="mt-2">Total Device alloted : 5</strong>
+            <strong class="mt-2">Number of Hub : 1</strong>
+            <strong class="mt-2">Number of sensors : 4</strong>
+        </div>
+        <div class="turn-on-relay d-flex flex-column align-items-center text-white mt-4" >
+            <strong class="mt-5" style="font-size:x-large">Turn on Water</strong>
+            <mat-icon class="mt-2" matTooltip="Turn ON/OFF water"  
+            [ngStyle]="(pumpData)?{'color':'rgb(100,255,100)'}:{'color':'rgb(255,100,100)'}"
+            (click)="updateValues()">power_settings_new</mat-icon>
+        </div>
+    </div>
+</div>

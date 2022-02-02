@@ -1,5 +1,9 @@
+import { DatabaseService } from './../../services/database.service';
 import { WeatherService } from './../../services/weather.service';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { getDatabase,ref,onValue } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +13,21 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private weatherHttpService:WeatherService
+    private weatherHttpService:WeatherService,
+    private db:DatabaseService
   ) { }
 
   ngOnInit(): void {
     this.getCurrentGeoLocation();
+    this.db.getAll().snapshotChanges().subscribe(data => {
+      this.pumpData = data[1].payload.val()['pumpData'];
+      this.sensorLatitude = data[0].payload.val().latitude;
+      this.sensorLongitude = data[0].payload.val().longitude;
+    });
   }
   
+  sensorLatitude:number;
+  sensorLongitude:number;
   todayDate:string[] = [];
   weatherIconUrl:string = '';
   weatherState:string = '';
@@ -23,7 +35,8 @@ export class HomeComponent implements OnInit {
   humidity:number = 5;
   gust:number = 3;
   forecastWeatherData:{url:string,text:string}[] = [];
-
+  pumpData:number =0;
+  toggle:boolean = false;
 
   getWeatherData(query:string){
     this.weatherHttpService.getCurrentWeatherData(query).subscribe((x:any)=>{
@@ -34,6 +47,7 @@ export class HomeComponent implements OnInit {
       this.gust = x['current']['gust_kph'];
     })
   }
+
 
   async getForecastData(query:string,days:number){
     
@@ -62,11 +76,38 @@ export class HomeComponent implements OnInit {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         this.getWeatherData(`${latitude},${longitude}`); 
-        await this.getForecastData(`${latitude},${longitude}`,7);
+        await this.getForecastData(`${latitude},${longitude}`,3);
       });
       
       
     }
+  }
+
+  getSensorLocation(){
+
+    this.forecastWeatherData = [];
+    if(!this.toggle){
+
+      this.getWeatherData(`${this.sensorLatitude},${this.sensorLongitude}`);
+      this.getForecastData(`${this.sensorLatitude},${this.sensorLongitude}`,3);
+      this.toggle = true;
+    }
+    else{
+      this.getCurrentGeoLocation();
+      this.toggle = false;
+    }
+  }
+
+  async updateValues(){
+    let value;
+    if(this.pumpData === 0){
+      value = 1;
+    }
+    else{
+      value = 0;
+    }
+    await this.db.update('pump',{'pumpData':value});
+    this.pumpData = value;
   }
 
 }

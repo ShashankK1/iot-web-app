@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class SidenavbarComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    private activatedRoute:ActivatedRoute
   ) { }
 
   sideNavIcons:string[] = ['home','dashboard','contact_support'];
@@ -17,6 +18,7 @@ export class SidenavbarComponent implements OnInit {
   sideNavRouter:string[] = ['home','dashboard','info']
   selectedTab:number = 0 ;
   ngOnInit(): void {
+    this.onTabSelect(0);
   }
 
   async onTabSelect(e:number){
