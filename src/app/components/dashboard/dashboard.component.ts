@@ -9,15 +9,17 @@ import Chart  from 'chart.js/auto';
 })
 export class DashboardComponent implements OnInit {
 
+  count:number =0;
   constructor(private db:DatabaseService,
     private ngZone:NgZone) { }
 
   ngOnInit(): void {
     this.getChartData();
-    
+    Chart.defaults.animation = false;
   }
 
   getChartData(){
+    this.count++;
     this.db.getAll().snapshotChanges().subscribe((data:any) => {
       this.pumpData = data[1].payload.val()['pumpData'];    
       Object.values(data[2].payload.val()['data']).map((x:any)=>{
@@ -25,8 +27,16 @@ export class DashboardComponent implements OnInit {
 
           this.data.push(x.data);
           const array = x.time.split(" ");
-          this.labels.push(array[3]);
-        })
+          const array2 = array[3].split(":");
+          const newArray = array2[2];
+          this.labels.push(newArray);
+          
+          if(this.labels.length>15){
+            this.labels.splice(0,1);
+            this.data.splice(0,1);
+          }
+          
+        });
         
       });
       this.ChartOptions = {
@@ -46,11 +56,16 @@ export class DashboardComponent implements OnInit {
   
       const chartRef = <HTMLCanvasElement>document.getElementById('dataChart');
       if(chartRef!==null){
-  
+        if(this.chart !== undefined){
+          this.chart.destroy();
+          
+        }
         this.chart = new Chart(
           chartRef,
           this.config
           );
+        this.chart.update('none');
+        this.chart.options.animation = false;
       }
     });
   }
@@ -74,14 +89,23 @@ export class DashboardComponent implements OnInit {
   chart:any;
 
   async updateValues(){
-    let value;
+    let value = 0;
     if(this.pumpData === 0){
-      value = 1;
+      
+      if(confirm('Our data shows u dont need to open water')){
+        value = 1;
+        await this.db.update('pump',{'pumpData':value});
+      }
+    
     }
     else{
-      value = 0;
+      
+      if(confirm('Our data shows u need to open water')){
+        value = 0;
+        await this.db.update('pump',{'pumpData':value});
+      }
     }
-    await this.db.update('pump',{'pumpData':value});
+    
     this.pumpData = value;
   }
 }
