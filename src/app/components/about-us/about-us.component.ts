@@ -12,4 +12,7 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  githubClick(){
+    
+  }
 }

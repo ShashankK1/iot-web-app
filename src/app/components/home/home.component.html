@@ -5,7 +5,7 @@
             <mat-icon class="search">search</mat-icon>
         </div>
         <div class="date align-self-center">
-            <strong>Friday</strong><span class="text-muted"> 14 January</span>
+            <strong>Friday</strong><span class="text-muted"> 24 April</span>
         </div>
     </div>
     <div class="weather-section d-flex flex-column">
@@ -68,19 +68,19 @@
     </div>
     <div class="user-profile d-flex flex-column flex-column mt-2">
         <div class="profile-icon d-flex w-100 justify-content-center mt-4">
-            <img src="../../../assets/profile.svg" style="height: 128px;width: 128px;" class="profile-img" >
+            <img src="../../../assets/myImg.jpeg" style="height: 128px;width: 128px;" class="profile-img" >
         </div>
         <div class="user-location text-white d-flex flex-column align-items-center mt-2">
-            <strong class="mt-2">Nyay Khand-1, Indirapuram</strong>
-            <strong class="mt-2">Ghaziabad(201014),</strong>
-            <strong class="mt-2">UP, India</strong>
+            <strong class="mt-2">{{placeName}},{{placeRegion}}</strong>
+            <strong class="mt-2">(Latitude:{{currentLatitude}},Longitude:{{currentLongitude}})</strong>
+            <strong class="mt-2">India</strong>
             <strong><mat-icon matTooltip="Change Location to Sensors" (click)="getSensorLocation()">track_changes</mat-icon></strong>
         </div>
         <div class="users-device d-flex flex-column text-white mt-4 align-items-center">
             <br>
-            <strong class="mt-2">Total Device alloted : 5</strong>
+            <strong class="mt-2">Total Device alloted : 1</strong>
             <strong class="mt-2">Number of Hub : 1</strong>
-            <strong class="mt-2">Number of sensors : 4</strong>
+            <strong class="mt-2">Number of sensors : 1</strong>
         </div>
         <div class="turn-on-relay d-flex flex-column align-items-center text-white mt-4" >
             <strong class="mt-5" style="font-size:x-large" >Turn on Water</strong>

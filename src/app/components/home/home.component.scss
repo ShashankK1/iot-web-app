@@ -157,7 +157,7 @@
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     background: #fc00ff;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #0AD2DF#DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom, #0AD2DF #DB1DFB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #0AD2DF, #DB1DFB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     .profile-img{
         border:2px solid white;

@@ -1,3 +1,4 @@
+import { DataTravelService } from './../../services/data-travel.service';
 import { DatabaseService } from './../../services/database.service';
 import { WeatherService } from './../../services/weather.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private weatherHttpService:WeatherService,
-    private db:DatabaseService
+    private db:DatabaseService,
+    private dataTravel:DataTravelService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,8 @@ export class HomeComponent implements OnInit {
   }
   
   sensorLatitude:number;
+  placeName:string;
+  placeRegion:string;
   sensorLongitude:number;
   todayDate:string[] = [];
   weatherIconUrl:string = '';
@@ -37,6 +41,8 @@ export class HomeComponent implements OnInit {
   forecastWeatherData:{url:string,text:string}[] = [];
   pumpData:number =0;
   toggle:boolean = false;
+  currentLatitude:number;
+  currentLongitude:number;
 
   getWeatherData(query:string){
     this.weatherHttpService.getCurrentWeatherData(query).subscribe((x:any)=>{
@@ -45,13 +51,19 @@ export class HomeComponent implements OnInit {
       this.temperature = x['current']['temp_c'];
       this.humidity = x['current']['humidity'];
       this.gust = x['current']['gust_kph'];
+      this.placeName = x['location']['name'];
+      this.placeRegion = x['location']['region'];
+      this.currentLatitude = x['location']['lat'];
+      this.currentLongitude = x['location']['lon'];
+      // console.log("sending data");
+      // this.dataTravel.createPath([this.placeName,this.placeRegion,this.currentLatitude,this.currentLongitude]);
     })
   }
 
 
   async getForecastData(query:string,days:number){
     
-    const res:any = await this.weatherHttpService.getWeatherForecast(query,days).toPromise()
+    const res:any = await this.weatherHttpService.getWeatherForecast(query,days).toPromise();
     const data:any[] = res['forecast']['forecastday'];
     data.map((x:any)=>{
       const d:any = x['day']['condition']
@@ -77,6 +89,7 @@ export class HomeComponent implements OnInit {
         longitude = position.coords.longitude;
         this.getWeatherData(`${latitude},${longitude}`); 
         await this.getForecastData(`${latitude},${longitude}`,3);
+        
       });
       
       
@@ -87,10 +100,11 @@ export class HomeComponent implements OnInit {
 
     this.forecastWeatherData = [];
     if(!this.toggle){
-
+      console.log('sensor location');
       this.getWeatherData(`${this.sensorLatitude},${this.sensorLongitude}`);
       this.getForecastData(`${this.sensorLatitude},${this.sensorLongitude}`,3);
       this.toggle = true;
+     
     }
     else{
       this.getCurrentGeoLocation();
